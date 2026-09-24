@@ -1,0 +1,2 @@
+# Data
+The project uses latitude, longitude, depth, time and seismic measurements as candidate inputs and earthquake magnitude as the target. Document the exact dataset, collection period, geographic coverage and record count used in final experiments.
