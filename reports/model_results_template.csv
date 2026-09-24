@@ -1,0 +1,6 @@
+Model,MAE,MSE,RMSE,R2,Training_Time,Inference_Time,Notes
+Linear Regression,,,,,,,
+Decision Tree,,,,,,,
+Random Forest,,,,,,,
+XGBoost,,,,,,,
+ANN,,,,,,,
