@@ -1,0 +1,4 @@
+name,mobile_number,latitude,longitude,address,alerts_enabled,risk_levels
+Demo User 1,+919876543210,17.3850,78.4867,Hyderabad,true,"Moderate Risk|High Risk|Very High Risk|Critical Risk"
+Demo User 2,+919876543211,17.4000,78.4800,Nearby Hyderabad,true,"Low Risk|Moderate Risk|High Risk|Very High Risk|Critical Risk"
+Demo User 3,+919876543212,17.7000,78.9000,Outside demo radius,true,"High Risk|Very High Risk|Critical Risk"
