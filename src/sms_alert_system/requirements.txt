@@ -8,3 +8,5 @@ scikit-learn>=1.4
 tensorflow>=2.15
 pymysql>=1.1
 phonenumbers>=8.13
+requests>=2.31
+joblib>=1.3
