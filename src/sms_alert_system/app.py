@@ -67,6 +67,17 @@ with tab1:
             result=send_test_sms(test_phone)
             (st.success if result["success"] else st.error)(str(result))
 
+    st.subheader("Send a one-time email test")
+    test_email=st.text_input("Test email address")
+    if st.button("Send test email"):
+        if not re.fullmatch(r"[^@\\s]+@[^@\\s]+\\.[^@\\s]+",test_email.strip()):
+            st.error("Enter a valid email address.")
+        else:
+            from services.email_service import send_email
+            result=send_email(test_email,"SEISMOALERT email test",
+                "This is a test email only. No earthquake is being reported.",simulation_mode)
+            (st.success if result["success"] else st.error)(str(result))
+
 with tab2:
     with st.form("register_user"):
         name=st.text_input("Recipient name")
