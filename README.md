@@ -107,3 +107,29 @@ The final MAE/MSE/RMSE/R² values must come from completed experiments. Do not f
 - Sumanth Reddy (2420030782)
 
 Department of Computer Science and Engineering, Koneru Lakshmaiah Education Foundation.
+
+## Extended end-to-end features
+
+The Streamlit application now includes a trained-model prediction option, a manual magnitude mode for safely testing the alert workflow, recipient registration with SMS/email preferences, notification history, and a one-time SMS test action. SMTP email is implemented in `services/email_service.py`; configure it locally through environment variables.
+
+### Dataset and model training
+
+From `src/sms_alert_system`, activate your virtual environment and install `requirements.txt`. Then run:
+
+```bash
+python download_usgs_dataset.py --start 2015-01-01 --end 2025-01-01 --min-magnitude 2.5
+python train_model.py
+streamlit run app.py
+```
+
+The downloader saves the public USGS catalog to `data/usgs_earthquakes.csv`. Training compares Linear Regression, Decision Tree, Random Forest, and Extra Trees on a held-out test split, writes `model_metrics.csv`, and saves `models/magnitude_model.joblib`. Report the actual generated metrics; do not copy illustrative metrics into the final research paper.
+
+### SMS and email configuration
+
+Copy `.env.example` to `.env` and set Twilio credentials locally. For email, set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_APP_PASSWORD`, and `SMTP_FROM_EMAIL`. For Gmail, use a Google App Password where supported, not your normal account password. Never commit `.env`, credentials, real recipient contact details, or database files.
+
+Keep `SIMULATION_MODE=true` while testing. Only disable it when you intentionally want to send real external messages to recipients who consented to receive them. SMS delivery depends on Twilio account, sender-number, country, and destination restrictions.
+
+### Important research limitation
+
+This academic prototype estimates a magnitude from structured catalog fields. It does not predict the exact time or location of future earthquakes and must not be presented as an official earthquake early-warning service. Geographic radius and magnitude bands are project-configurable demonstration rules.
