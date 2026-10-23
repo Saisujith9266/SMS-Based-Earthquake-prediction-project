@@ -70,7 +70,7 @@ with tab1:
     st.subheader("Send a one-time email test")
     test_email=st.text_input("Test email address")
     if st.button("Send test email"):
-        if not re.fullmatch(r"[^@\\s]+@[^@\\s]+\\.[^@\\s]+",test_email.strip()):
+        if not re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+",test_email.strip()):
             st.error("Enter a valid email address.")
         else:
             from services.email_service import send_email
